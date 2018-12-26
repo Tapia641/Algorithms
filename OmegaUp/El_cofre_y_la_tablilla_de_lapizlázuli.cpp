@@ -1,4 +1,4 @@
-//https://omegaup.com/arena/problem/lapizlazuli
+//https://omegaup.com/arena/problem/lapizlazuli 
 
 #include <iostream>
 #include <vector>
