@@ -31,6 +31,14 @@ main(int argc, char const *argv[])
 {
     int N;
     cin >> N;
-    function(N);
+
+    if (N <= 1)
+    {
+        cout << "No existen numeros primos en la cantidad ingresada.";
+    }
+    else
+    {
+        function(N);
+    }
     return 0;
 }
