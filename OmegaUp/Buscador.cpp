@@ -30,7 +30,8 @@ int LCS_DP(string cadena1, string cadena2)
             }
         }
     }
-    return Matrix[cadena1.size()][cadena2.size()];
+
+    return Matrix[cadena1.size() - 1][cadena2.size() - 1];
 }
 
 void function()
@@ -41,6 +42,8 @@ void function()
     cin >> cadena >> P;
     dic.push_back(cadena);
 
+    //Considerando que la posicion dic[0] está ocupado por la palabra en el Buscador
+
     for (i = 0; i < P; i++)
     {
         cin >> cadena;
@@ -49,11 +52,12 @@ void function()
 
     for (i = 1; i < dic.size(); i++)
     {
-        P = LCS_DP(dic[i], dic[0]);
+        P = LCS_DP(dic[0], dic[i]);
         if (P > M)
             M = P;
     }
-    cout << M;
+
+    cout << dic[M];
 }
 
 main(int argc, char const *argv[])
