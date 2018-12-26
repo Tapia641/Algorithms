@@ -1,36 +1,65 @@
 //https://omegaup.com/arena/problem/aldp
 
 #include <iostream>
-#include <queue>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-void function(int &M, int &N)
+int position(vector<int> &V, int &X)
 {
-    queue<int> Chapas, Llaves;
-    int X;
-    
+    int left = 0, right = V.size() - 1, middle = 0;
+    while (left <= right)
+    {
+        middle = (int)((right + left) / 2);
+        if (V[middle] == X)
+            return middle;
+        if (V[middle] > X)
+            left = middle - 1;
+        else
+            right = middle + 1;
+    }
+    return -1;
+}
+
+void function()
+{
+    vector<int> Chapas, Llaves;
+    int X, W, M, N;
+
     //Chapas
+    scanf("%d", &M);
     for (int i = 0; i < M; i++)
     {
         scanf("%d", &X);
-        Chapas.push(X);
+        Chapas.push_back(X);
     }
 
     //Llaves
+    scanf("%d", &M);
     for (int i = 0; i < N; i++)
     {
         scanf("%d", &X);
-        Llaves.push(X);
+        Llaves.push_back(X);
+    }
+
+    for (int i = 0; i < N; i++)
+    {
+        W = (binary_search(Chapas, Llaves[i]));
+        if (W == -1)
+        {
+            cout << 0 << " ";
+        }
+        else
+        {
+            cout << W << " ";
+        }
     }
 }
 
 main(int argc, char const *argv[])
 {
     //Con N <= M
-    int M, N;
-    scanf("%d%d", &M, &N);
-    function(M, N);
-
+    function();
     return 0;
 }
