@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
@@ -15,9 +14,9 @@ int position(vector<int> &V, int &X)
         if (V[middle] == X)
             return middle;
         if (V[middle] > X)
-            left = middle - 1;
+            right = middle - 1;
         else
-            right = middle + 1;
+            left = middle + 1;
     }
     return -1;
 }
@@ -36,7 +35,7 @@ void function()
     }
 
     //Llaves
-    scanf("%d", &M);
+    scanf("%d", &N);
     for (int i = 0; i < N; i++)
     {
         scanf("%d", &X);
@@ -45,14 +44,15 @@ void function()
 
     for (int i = 0; i < N; i++)
     {
-        W = (binary_search(Chapas, Llaves[i]));
+        W = (position(Chapas, Llaves[i]));
         if (W == -1)
         {
             cout << 0 << " ";
         }
         else
         {
-            cout << W << " ";
+            //Para indices ordinales
+            cout << W + 1 << " ";
         }
     }
 }
