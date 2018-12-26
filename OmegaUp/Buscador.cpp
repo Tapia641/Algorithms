@@ -6,15 +6,31 @@
 
 using namespace std;
 
-int LCS(string cadena1, string cadena2)
+//https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
+
+int LCS_DP(string cadena1, string cadena2)
 {
-    for (int i = 0; i < cadena.; i++)
+    vector<vector<int>> Matrix(cadena1.size() + 1, vector<int>(cadena2.size() + 1));
+
+    for (int i = 0; i < cadena1.size(); i++)
     {
-        for (int j = 0; j < count; j++)
+        for (int j = 0; j < cadena2.size(); j++)
         {
-            /* code */
+            if (i == 0 || j == 0)
+            {
+                Matrix[i][j] = 0;
+            }
+            else if (cadena1[i - 1] == cadena2[j - 1])
+            {
+                Matrix[i][j] = Matrix[i - 1][j - 1] + 1;
+            }
+            else
+            {
+                Matrix[i][j] = max(Matrix[i - 1][j], Matrix[i][j - 1]);
+            }
         }
     }
+    return Matrix[cadena1.size()][cadena2.size()];
 }
 
 void function()
@@ -33,7 +49,7 @@ void function()
 
     for (i = 1; i < dic.size(); i++)
     {
-        P = LCS(dic[i], dic[0]);
+        P = LCS_DP(dic[i], dic[0]);
         if (P > M)
             M = P;
     }
