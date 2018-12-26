@@ -16,7 +16,7 @@ bool isPrime(int &X)
     return true;
 }
 
-function(int &N)
+void function(int &N)
 {
     int C = 0;
     for (int i = 2; i < N; i++)
