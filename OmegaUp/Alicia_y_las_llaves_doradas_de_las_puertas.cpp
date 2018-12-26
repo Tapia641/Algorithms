@@ -59,7 +59,6 @@ void function()
 
 main(int argc, char const *argv[])
 {
-    //Con N <= M
     function();
     return 0;
 }
