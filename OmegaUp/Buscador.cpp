@@ -10,7 +10,7 @@ using namespace std;
 
 int LCS_DP(string cadena1, string cadena2)
 {
-    vector<vector<int>> Matrix(cadena1.size() + 1, vector<int>(cadena2.size() + 1));
+    vector<vector<int>> Matrix(cadena1.size(), vector<int>(cadena2.size()));
 
     for (int i = 0; i < cadena1.size(); i++)
     {
@@ -36,28 +36,21 @@ int LCS_DP(string cadena1, string cadena2)
 
 void function()
 {
-    string cadena, palabra;
-    int P, i, M = 0;
-    vector<string> dic;
-    cin >> cadena >> P;
-    dic.push_back(cadena);
+    string cadena, palabra, res = "";
+    int AUX, M = 0, N, i;
+    cin >> cadena >> N;
 
-    //Considerando que la posicion dic[0] está ocupado por la palabra en el Buscador
-
-    for (i = 0; i < P; i++)
+    for (i = 0; i < N; i++)
     {
-        cin >> cadena;
-        dic.push_back(cadena);
+        cin >> palabra;
+        AUX = LCS_DP(cadena, palabra);
+        if (AUX >= M)
+        {
+            M = AUX;
+            res = palabra;
+        }
     }
-
-    for (i = 1; i < dic.size(); i++)
-    {
-        P = LCS_DP(dic[0], dic[i]);
-        if (P > M)
-            M = P;
-    }
-
-    cout << dic[M];
+    cout<<res;
 }
 
 main(int argc, char const *argv[])
