@@ -1,4 +1,9 @@
 //https://omegaup.com/arena/problem/Buscador
+/*
+Solución:
+Si hay dos o más palabras con el mismo factor común que la palabra ingresada, 
+la palabra con la menor cantidad de letras entre las empatadas es la ganadora.
+*/
 
 #include <iostream>
 #include <vector>
@@ -11,7 +16,6 @@ using namespace std;
 int LCS_DP(string cadena1, string cadena2)
 {
     vector<vector<int>> Matrix(cadena1.size(), vector<int>(cadena2.size()));
-
     for (int i = 0; i < cadena1.size(); i++)
     {
         for (int j = 0; j < cadena2.size(); j++)
@@ -30,27 +34,28 @@ int LCS_DP(string cadena1, string cadena2)
             }
         }
     }
-
     return Matrix[cadena1.size() - 1][cadena2.size() - 1];
 }
 
 void function()
 {
-    string cadena, palabra, res = "";
-    int AUX, M = 0, N, i;
-    cin >> cadena >> N;
-
-    for (i = 0; i < N; i++)
+    string cadena1, cadena2, respuesta = "", auxiliar = "";
+    int N, M = 0, P, Z = 0;
+    cin >> cadena1 >> N;
+    for (int i = 0; i < N; i++)
     {
-        cin >> palabra;
-        AUX = LCS_DP(cadena, palabra);
-        if (AUX >= M)
+        cin >> cadena2;
+        P = LCS_DP(cadena1, cadena2);
+        if (P > M)
         {
-            M = AUX;
-            res = palabra;
+            M = P;
+            auxiliar = cadena2;
+        }
+        else if (P == M)
+        {
         }
     }
-    cout<<res;
+    cout << respuesta;
 }
 
 main(int argc, char const *argv[])
