@@ -2,22 +2,43 @@
 #include <iostream>
 using namespace std;
 
-int exp_modular(int &a, int &n, int &m)
+void exp_modular_rap(long long &a, long long &n, long long &m)
 {
-    int x, p = a;
-    while (n--)
+    /*
+    long long x = a % m, e = 1;
+    while (n > 0)
     {
-        x = p % m;
-        p = x * a;
+        if (n % 2 != 0)
+        {
+            e = (e * x) % m;
+        }
+        n = n / 2;
+        x = (x * x) % m;
     }
-    return x;
+    cout << e;
+
+    */
+
+    long long x = 1;
+    while (n > 0)
+    {
+        //Preguntamos si es impar
+        if (n & 1)
+        {
+            x = (x * a) % m;
+        }
+        //Hacemos corrimientos de bits para la siguiente iteración
+        n = n >> 1;
+        a = (a * a) % m;
+    }
+    cout << x;
 }
 
 void function()
 {
-    int a, n, m;
+    long long a, n, m;
     cin >> a >> n >> m;
-    cout << exp_modular(a, n, m);
+    exp_modular_rap(a, n, m);
 }
 
 main(int argc, char const *argv[])
