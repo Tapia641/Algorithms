@@ -39,7 +39,7 @@ int LCS_DP(string &cadena1, string &cadena2)
 void function()
 {
     string cadena1, cadena2, respuesta = "";
-    int N, M = 0, P = -1;
+    int N, M = 0, P;
     cin >> cadena1 >> N;
     for (int i = 0; i < N; i++)
     {
@@ -50,12 +50,9 @@ void function()
             M = P;
             respuesta = cadena2;
         }
-        else if (P == M)
+        else if (P == M && cadena2.size() < respuesta.size())
         {
-            if (cadena2.size() < respuesta.size())
-            {
-                respuesta = cadena2;
-            }
+            respuesta = cadena2;
         }
     }
     cout << respuesta;
