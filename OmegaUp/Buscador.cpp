@@ -12,12 +12,12 @@ la palabra con la menor cantidad de letras entre las empatadas es la ganadora.
 using namespace std;
 
 //https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
-int LCS_DP(string cadena1, string cadena2)
+int LCS_DP(string &cadena1, string &cadena2)
 {
-    vector<vector<int>> Matrix(cadena1.size(), vector<int>(cadena2.size()));
-    for (int i = 0; i < cadena1.size(); i++)
+    vector<vector<int>> Matrix(cadena1.size() + 1, vector<int>(cadena2.size() + 1));
+    for (int i = 0; i <= cadena1.size(); i++)
     {
-        for (int j = 0; j < cadena2.size(); j++)
+        for (int j = 0; j <= cadena2.size(); j++)
         {
             if (i == 0 || j == 0)
             {
@@ -33,13 +33,13 @@ int LCS_DP(string cadena1, string cadena2)
             }
         }
     }
-    return Matrix[cadena1.size() - 1][cadena2.size() - 1];
+    return Matrix[cadena1.size()][cadena2.size()];
 }
 
 void function()
 {
     string cadena1, cadena2, respuesta = "";
-    int N, M = 0, P;
+    int N, M = 0, P = -1;
     cin >> cadena1 >> N;
     for (int i = 0; i < N; i++)
     {
@@ -50,9 +50,12 @@ void function()
             M = P;
             respuesta = cadena2;
         }
-        else if (P == M && cadena2.size() < respuesta.size())
+        else if (P == M)
         {
-            respuesta = cadena2;
+            if (cadena2.size() < respuesta.size())
+            {
+                respuesta = cadena2;
+            }
         }
     }
     cout << respuesta;
