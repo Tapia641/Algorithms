@@ -29,7 +29,7 @@ bool comp2(struct myVector a, struct myVector b)
         return a.Index > b.Index;
 }
 
-void Sorting(string &cadena, string &cadena2)
+void Sorting(string &cadena)
 {
     struct myVector data[cadena.size()];
     for (int i = 0; i < cadena.size(); i++)
@@ -69,10 +69,13 @@ void function()
     int N;
     cin >> N;
     string firstString, secondString;
+    struct myVector data1[firstString.size()], data2[secondString.size()];
+
     while (N--)
     {
         cin >> firstString >> secondString;
-        Sorting(firstString, secondString);
+        Sorting(firstString);
+        Sorting(secondString);
     }
 }
 
