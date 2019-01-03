@@ -1,5 +1,7 @@
 /*
-
+https://goo.gl/pDct9K
+Descartar numeros
+Considerar Mayusculas
 Datos tomados en cuenta:
 https://www.geeksforgeeks.org/sort-elements-by-frequency/
 */
@@ -23,7 +25,6 @@ bool comp1(struct myVector a, struct myVector b)
 
 bool comp2(struct myVector a, struct myVector b)
 {
-
     if (a.Count != b.Count)
         return a.Count < b.Count;
     else
@@ -73,16 +74,22 @@ void Sorting(string &cadena, vector<pair<char, int>> &v)
 
 void Solution(vector<pair<char, int>> &v1, vector<pair<char, int>> &v2)
 {
-    pair<char, int> p;
-    for (int i = 0; i < v1.size(); i++)
-    {
-        p = v1[i];
-        cout << p.first << "\t" << p.second << endl;
-    }
+    pair<char, int> p1, p2;
     for (int i = 0; i < v2.size(); i++)
     {
-        p = v2[i];
-        cout << p.first << "\t" << p.second << endl;
+        p1 = v1[i];
+        p2 = v2[i];
+        while (p2.second--)
+        {
+            if (p1.first >= 48 && p1.first <= 57)
+            {
+                continue;
+            }
+            else
+            {
+                cout << p1.first;
+            }
+        }
     }
 }
 
@@ -93,11 +100,13 @@ void function()
     string firstString, secondString;
     while (N--)
     {
+        cout << endl;
         vector<pair<char, int>> v1, v2;
         cin >> firstString >> secondString;
         Sorting(firstString, v1);
         Sorting(secondString, v2);
         Solution(v1, v2);
+        cout << endl;
     }
 }
 
