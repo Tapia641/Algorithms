@@ -6,12 +6,13 @@ https://www.geeksforgeeks.org/sort-elements-by-frequency/
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
 struct myVector
 {
-    string Element;
+    char Element;
     int Index, Count;
 };
 
@@ -29,7 +30,7 @@ bool comp2(struct myVector a, struct myVector b)
         return a.Index > b.Index;
 }
 
-void Sorting(string &cadena)
+void Sorting(string &cadena, vector<pair<char, int>> &v)
 {
     struct myVector data[cadena.size()];
     for (int i = 0; i < cadena.size(); i++)
@@ -56,11 +57,32 @@ void Sorting(string &cadena)
 
     sort(data, data + cadena.size(), comp2);
 
-    for (int i = 0; i < cadena.size(); i++)
+    pair<char, int> p;
+    for (int i = cadena.size() - 1; i > 0; i--)
     {
-        cout << data[i].Element << "\t";
-        cout << data[i].Count << "\t";
-        cout << data[i].Index << endl;
+        if (data[i].Count == -1)
+            break;
+        else
+        {
+            p.first = data[i].Element;
+            p.second = data[i].Count;
+            v.push_back(p);
+        }
+    }
+}
+
+void Solution(vector<pair<char, int>> &v1, vector<pair<char, int>> &v2)
+{
+    pair<char, int> p;
+    for (int i = 0; i < v1.size(); i++)
+    {
+        p = v1[i];
+        cout << p.first << "\t" << p.second << endl;
+    }
+    for (int i = 0; i < v2.size(); i++)
+    {
+        p = v2[i];
+        cout << p.first << "\t" << p.second << endl;
     }
 }
 
@@ -69,13 +91,13 @@ void function()
     int N;
     cin >> N;
     string firstString, secondString;
-    struct myVector data1[firstString.size()], data2[secondString.size()];
-
     while (N--)
     {
+        vector<pair<char, int>> v1, v2;
         cin >> firstString >> secondString;
-        Sorting(firstString);
-        Sorting(secondString);
+        Sorting(firstString, v1);
+        Sorting(secondString, v2);
+        Solution(v1, v2);
     }
 }
 
