@@ -22,7 +22,11 @@ bool comp1(struct myVector a, struct myVector b)
 
 bool comp2(struct myVector a, struct myVector b)
 {
-    return a.Element < b.Element;
+
+    if (a.Count != b.Count)
+        return a.Count < b.Count;
+    else
+        return a.Index > b.Index;
 }
 
 void Sorting(string &cadena, string &cadena2)
@@ -35,14 +39,7 @@ void Sorting(string &cadena, string &cadena2)
         data[i].Count = 0;
     }
     sort(data, data + cadena.size(), comp1);
-    /*
-    for (int i = 0; i < cadena.size(); i++)
-    {
-        cout << data[i].Element << "\t";
-        cout << data[i].Index << "\t";
-        cout << data[i].Count << endl;
-    }
-    */
+
     for (int i = 0; i < cadena.size(); i++)
     {
         if (data[i].Element == data[i - 1].Element)
@@ -55,6 +52,15 @@ void Sorting(string &cadena, string &cadena2)
         {
             data[i].Count = 1;
         }
+    }
+
+    sort(data, data + cadena.size(), comp2);
+
+    for (int i = 0; i < cadena.size(); i++)
+    {
+        cout << data[i].Element << "\t";
+        cout << data[i].Count << "\t";
+        cout << data[i].Index << endl;
     }
 }
 
