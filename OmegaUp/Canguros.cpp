@@ -9,8 +9,8 @@ using namespace std;
 void function()
 {
     FASTINPUT
-    int C, N;
-    queue<int> Q;
+    unsigned int C, N;
+    queue<unsigned int> Q;
     char S;
     cin >> C >> N;
     while (N--)
@@ -18,7 +18,7 @@ void function()
         cin >> S;
         if (S == 'N')
         {
-            int M;
+            unsigned int M;
             cin >> M;
             Q.push(M + 1);
         }
