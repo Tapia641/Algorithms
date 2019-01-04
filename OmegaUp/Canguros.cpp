@@ -2,19 +2,38 @@
 #include <iostream>
 #include <queue>
 using namespace std;
+#define FASTINPUT \
+    cin.tie(0);   \
+    ios_base::sync_with_stdio(0);
 
 void function()
 {
+    FASTINPUT
     int C, N;
+    queue<int> Q;
     char S;
-    scanf("%d%d", &C, &N);
+    cin >> C >> N;
     while (N--)
     {
-        scanf("%c", &S);
+        cin >> S;
         if (S == 'N')
         {
-            char M;
-            scanf("%c",&M);
+            int M;
+            cin >> M;
+            Q.push(M + 1);
+        }
+        else if (S == 'A')
+        {
+            C -= Q.front();
+            Q.pop();
+        }
+        else if (S == 'C')
+        {
+            cout << Q.size() << "\n";
+        }
+        else if (S == 'R')
+        {
+            cout << C << "\n";
         }
     }
 }
