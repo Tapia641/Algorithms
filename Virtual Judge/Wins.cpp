@@ -7,6 +7,16 @@ Consider the following votes : ['Glenn', 'Emily', 'Emily', 'Glenn']. Each candid
 string voteWinner(vector<string> votes)
 function voteWinner should return a string with the name of the winner.
 appears last alphabetically
+
+Input:
+4
+Glenn
+Emily
+Emily
+Glenn
+
+Output:
+Gleen
 */
 
 #include <iostream>
