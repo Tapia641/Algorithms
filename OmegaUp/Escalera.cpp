@@ -5,7 +5,7 @@ using namespace std;
     cin.tie(0);   \
     ios_base::sync_with_stdio(0);
 /*
-Con N = 4 Y K = 3
+Con N = 4 K = 3
 1,1,1,1
 1,1,2
 1,2,1
