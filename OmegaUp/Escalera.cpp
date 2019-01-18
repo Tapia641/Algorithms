@@ -5,14 +5,12 @@ using namespace std;
     cin.tie(0);   \
     ios_base::sync_with_stdio(0);
 /*
-Con N = 4 K = 3
-1,1,1,1
-1,1,2
-1,2,1
-2,1,1
-2,2,
-1,3
-3,1
+Tenemos las combinaciones de la siguiente manera:
+1,1 - 1
+2,2 - 2
+3,3 - 4
+4,4 - 8
+5,5 - 16
 */
 int Escaleras(int N, int K)
 {
