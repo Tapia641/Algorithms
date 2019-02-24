@@ -24,6 +24,7 @@ bool isPalindrome(string word)
     }
     return true;
 }
+
 int main()
 {
     string word;
