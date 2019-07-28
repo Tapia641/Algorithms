@@ -2,11 +2,12 @@
 
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
-vector<int> v(100, 0);
+vector<int> v(101, 0);
 
-int sockMerchant(int n, vector<int> ar)
+int sockMerchant(int &n, vector<int> &ar)
 {
     int cont = 0;
 
@@ -43,6 +44,6 @@ int main(int argc, char const *argv[])
         cin >> aux;
         arr.push_back(aux);
     }
-    cout << sockMerchant(n, arr);
+    cout << sockMerchant(n, arr)<<endl;
     return 0;
 }
