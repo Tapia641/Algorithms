@@ -7,15 +7,15 @@ int countingValleys(int &n, string &s) {
 
     for (int i = 0; i < s.size(); i++)
     {
-        if (s[i] == 'U')
+        if (s[i] == 'U'){
             cont++;
+            if (cont == 0)
+                res++;
+        }
         else
             cont--;
-        if (cont == 0)
-            res++;
-        
     }
-    return res-1;
+    return res;
     
 }
 
