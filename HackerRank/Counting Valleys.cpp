@@ -18,7 +18,6 @@ int countingValleys(int &n, string &s) {
             cont--;
     }
     return res;
-    
 }
 
 int main(int argc, char const *argv[])
