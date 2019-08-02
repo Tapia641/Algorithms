@@ -1,6 +1,6 @@
 //https://www.hackerrank.com/challenges/repeated-string/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup
 
-#include <bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
 
@@ -11,8 +11,7 @@ void repeatedString() {
     for (int i = 0; i < s.size(); i++)
         if (s[i] == 'a')
             tam++;
-
-    cout<<tam%n;
+            
 }
 
 int main(int argc, char const *argv[])
