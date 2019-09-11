@@ -1,18 +1,32 @@
 //https://www.hackerrank.com/challenges/repeated-string/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <cmath>
 
 using namespace std;
 
 void repeatedString() {
-    string s; long long n, cont = 0, tam = 0;
-    cin>>s>>n;
+    
+    // Data
+    string myString; long long n; int number, extra, total = 0;
+    cin >> myString >> n;
 
-    for (int i = 0; i < s.size(); i++)
-        if (s[i] == 'a')
-            tam++;
+    // Count number of a's
+    number = count(myString.begin(), myString.end(), 'a');
+    extra = n%myString.size();
 
-    cout<<tam%n;
+    // Coutn last string with a's
+    for (int i = 0; i < extra; i++)
+    {
+        if (myString[i] == 'a')
+        {
+            total++;
+        }
+        
+    }
+    
+    cout << (number* (n/myString.size()) ) + total<< endl;
 }
 
 int main(int argc, char const *argv[])
